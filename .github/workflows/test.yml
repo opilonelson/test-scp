@@ -60,7 +60,8 @@ jobs:
           chmod 400 key.pem
           ssh -i key.pem -p $VM_PORT_DEV -o StrictHostKeyChecking=no $VM_USER_DEV@$VM_HOST
           echo "success"
-          #scp -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $SOURCE_FILE $VM_USER_DEV@$VM_HOST:$DESTINATION_DIR
+          
+      #scp -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $SOURCE_FILE $VM_USER_DEV@$VM_HOST:$DESTINATION_DIR
          
       #- name: Build image on server and deploy
       # run: ssh -i key.pem -p $VM_PORT_DEV -o StrictHostKeyChecking=no -l ${{ secrets.VM_USER_DEV}} $VM_HOST '/home/mifosdev/fineract_deployment/fineract/build.sh'
