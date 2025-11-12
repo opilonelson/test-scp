@@ -52,13 +52,13 @@ jobs:
 
       - name: Copy file using SCP
         run: |
-          #SOURCE_FILE=~/nellz/abcd.txt
-          #DESTINATION_DIR=/home/mifosdev/fineract_deployment/fineract/test
+          SOURCE_FILE=~/nellz/abcd.txt
+          DESTINATION_DIR=/home/mifosdev/fineract_deployment/fineract/test
                   
           echo "${{ secrets.VM_KEY_DEV }}" > key.pem
           cat key.pem
           chmod 400 key.pem
-          ssh -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $VM_USER_DEV@$VM_HOST
+          ssh -i key.pem -p $VM_PORT_DEV -o StrictHostKeyChecking=no $VM_USER_DEV@$VM_HOST
           echo "success"
           #scp -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $SOURCE_FILE $VM_USER_DEV@$VM_HOST:$DESTINATION_DIR
          
