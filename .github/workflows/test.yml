@@ -53,7 +53,7 @@ jobs:
       - name: Copy file using SCP
         run: |
           SOURCE_FILE=~/nellz/abcd.txt
-          DESTINATION_DIR=/home/mifosdev/fineract_deployment/fineract/test
+          DESTINATION_DIR=/home/mifosdev/fineract_deployment/fineract
                   
           echo "${{ secrets.VM_KEY_DEV }}" > key.pem
           cat key.pem
