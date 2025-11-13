@@ -60,8 +60,9 @@ jobs:
           chmod 400 key.pem
           ssh -i key.pem -p $VM_PORT_DEV -o StrictHostKeyChecking=no $VM_USER_DEV@$VM_HOST "ls -l ${DESTINATION_DIR}"
           echo "success"
-      - name: Copy file using SCP
-        run: scp -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $SOURCE_FILE $VM_USER_DEV@$VM_HOST:$DESTINATION_DIR
+          scp -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $SOURCE_FILE $VM_USER_DEV@$VM_HOST:$DESTINATION_DIR
+      #- name: Copy file using SCP
+      #  run: scp -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $SOURCE_FILE $VM_USER_DEV@$VM_HOST:$DESTINATION_DIR
           
       #scp -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $SOURCE_FILE $VM_USER_DEV@$VM_HOST:$DESTINATION_DIR
          
