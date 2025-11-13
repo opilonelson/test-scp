@@ -50,7 +50,7 @@ jobs:
           touch ~/.ssh/known_hosts
           ssh-keyscan -p $VM_PORT_DEV -t rsa $VM_HOST >> ~/.ssh/known_hosts
 
-      - name: Copy file using SCP
+      - name: Test Connection and list directory contents
         run: |
           SOURCE_FILE=~/nellz/abcd.txt
           DESTINATION_DIR=/home/mifosdev/fineract_deployment/fineract
@@ -60,6 +60,8 @@ jobs:
           chmod 400 key.pem
           ssh -i key.pem -p $VM_PORT_DEV -o StrictHostKeyChecking=no $VM_USER_DEV@$VM_HOST "ls -l ${DESTINATION_DIR}"
           echo "success"
+      - name: Copy file using SCP
+        run: scp -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $SOURCE_FILE $VM_USER_DEV@$VM_HOST:$DESTINATION_DIR
           
       #scp -i key.pem -P $VM_PORT_DEV -o StrictHostKeyChecking=no $SOURCE_FILE $VM_USER_DEV@$VM_HOST:$DESTINATION_DIR
          
